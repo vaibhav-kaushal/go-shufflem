@@ -61,9 +61,9 @@ If you can use a region or DC-based component in the ULID's randomness bits and 
 ## 2. Custom symmetric-encryption-like behavior
 Most symmetric encryption algorithms are based on three core parts: 
 
-1. Blocks of data: Each encryption mechanism ingests data in blocks of predefined size.
-2. Encryption algorithm: The core algorithm which changes the input blocks to the encrypted (output) blocks.
-3. An encryption key: A set of bytes which change the way algorithm will encrypt the blocks. Changing the key while keeping the algorithm and the input will result in a different output in almost all encryption algorithms.
+1. **Blocks of data**: Each encryption mechanism ingests data in blocks of predefined size.
+2. **Encryption algorithm**: The core algorithm which changes the input blocks to the encrypted (output) blocks.
+3. **An encryption key**: A set of bytes which change the way algorithm will encrypt the blocks. Changing the key while keeping the algorithm and the input will result in a different output in almost all encryption algorithms.
 
 You can use this library to encrypt your data (in a way) where the shuffle map will serve as the encryption key. Like _real_ encryption algorithms, when using bit-shuffling for encryption, guessing the key or original data becomes more and more difficult as you increase the `BitCount` and number of shuffle pairs in `Config`!
 
