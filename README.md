@@ -1,5 +1,5 @@
 # Shuffle 'em
-It is a library for bit shuffling, written in golang. The usecases are listed below.
+It is a library for bit shuffling, written in golang. The usecases are listed further below in the file.
 
 # Installation
 `go-shufflem` uses [Go Modules](https://go.dev/blog/using-go-modules). You can use the 
