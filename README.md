@@ -69,7 +69,15 @@ You can use this library to encrypt your data (in a way) where the shuffle map w
 
 The advantage here is that you can use can vary the input block size (increase the `BitCount`; ensure it is a multiple of 8 though) and strength of encryption (number of entries in `ShuffleMap`) according to your choice!
 
-For example, if the input (in hexadecimal notation)`676f73687566666c656d6c696240766169626861766b61757368616c2e636f6d` gets changed to `b6f6c62e3686166bae86d66e0d164696866e021a9636b6a6746666ae68cef6e6`, can you really tell what the shuffle map was like? How long would it take for you to make the correct guess and how many such samples are you going to need for the correct guess?
+For example, if the input (in hexadecimal notation):
+```
+676f73687566666c656d6c696240766169626861766b61757368616c2e636f6d
+```
+gets changed to 
+```
+b6f6c62e3686166bae86d66e0d164696866e021a9636b6a6746666ae68cef6e6
+```
+as the output of a shuffle, can you really tell what the shuffle map was like? How long would it take for you to make the correct guess and how many such samples are you going to need for the correct guess?
 
 # Todo
 1. Add the cyclic shuffling capability.
