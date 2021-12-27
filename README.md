@@ -56,7 +56,7 @@ The advantage of this approach is that you never have to save a `public_id`. Tha
 If you are using a (micro)service based architecture, you can have the shuffler in its own service and conceal the shuffle maps of each type in that service.
 
 ### Implementing uniqueness with ULID
-If you can use a region or DC-based component in the ULID's randomness bits and incrementing the rest based on an algorithm that only increments the remaining bits within the millisecond. The randomness bits being guaranteed to be unique within the millisecond has already been implemented well by the golang implementation in [oklog's library](https://github.com/oklog/ulid). You can use the same library
+If you can use a region or DC-based component in the ULID's randomness bits and incrementing the rest based on an algorithm that only increments the remaining bits within the millisecond. The randomness bits being guaranteed to be unique within the millisecond has already been implemented well in golang ([oklog's UUID library](https://github.com/oklog/ulid)). You can use the same library to define your own entropy for the above-mentioned behavior.
 
 ## 2. Custom symmetric-encryption-like behavior
 Most symmetric encryption algorithms are based on three core parts: 
