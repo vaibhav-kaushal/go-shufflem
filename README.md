@@ -8,6 +8,8 @@ go get github.com/vaibhav-kaushal/go-shufflem
 ```
 command (or you can just copy paste the `shuffler.go` file in your codebase if you can't use `go mod`). _The project has no dependencies outside the golang's standard library._
 
+**NOTE**: The package has been tested on both Intel and ARM architectures (AMD64 Ubuntu, ARM64 Ubuntu and ARM64 macOS (Apple Silicon)).
+
 # Testing
 ## Checking the output 
 The `main.go` file can be used to check the output. It contains a sample implementation of the library. You can run 
