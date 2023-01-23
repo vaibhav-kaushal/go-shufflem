@@ -39,7 +39,7 @@ const (
 )
 
 type Config struct {
-	BitCount   uint16 // For now, support only 128 bits max
+	BitCount   uint16 // Support up to 32767 bits (32 KiB) max
 	ShuffleMap map[uint16]uint16
 }
 
@@ -55,10 +55,13 @@ type WorkUnit struct {
 // Shuffle is the main function which will shuffle the bits
 func (w *WorkUnit) Shuffle() error {
 	err := w.validateConfig()
-	if w.Validated != true {
-		return errors.New(fmt.Sprintf("E#B0FY3 - Config not validated! Error: %v", err))
+	if err != nil {
+		return fmt.Errorf("E#B0FY3 - Config not validated! Error: %v", err)
 	}
-	w.buildBitSetterMap()
+	err = w.buildBitSetterMap()
+	if err != nil {
+		return fmt.Errorf("E#18BQUA - Could not build the setter map. Error: %v", err)
+	}
 	var result []byte
 	result = w.Input
 	for i := uint16(0); i < w.Config.BitCount; i++ {
@@ -136,17 +139,17 @@ func (w *WorkUnit) validateConfig() error {
 }
 
 // buildBitSetterMap builds the BitSetterMap in the WorkUnit
-func (w *WorkUnit) buildBitSetterMap() {
+func (w *WorkUnit) buildBitSetterMap() error {
 	for key, value := range w.Config.ShuffleMap {
 		err := errors.New("E#B0G0N")
 
 		valAtValueIndex, err := getBit(w.Input[int(value/8)], value%8)
 		if err != nil {
-			fmt.Println("E#AT666 - Error from getBit:", err)
+			return fmt.Errorf("E#AT666 - Error from getBit: %v", err)
 		}
 		valAtKeyIndex, err := getBit(w.Input[key/8], key%8)
 		if err != nil {
-			fmt.Println("E#AT6C0 - Error from getBit:", err)
+			return fmt.Errorf("E#AT6C0 - Error from getBit: %v", err)
 		}
 
 		if valAtKeyIndex != valAtValueIndex {
@@ -154,6 +157,7 @@ func (w *WorkUnit) buildBitSetterMap() {
 			w.BitSetterMap[value] = valAtKeyIndex
 		}
 	}
+	return nil
 }
 
 // buildBitSetterMap builds the BitSetterMap in the WorkUnit
@@ -244,7 +248,7 @@ func setBitOnByteArray(bit bool, onByteSlice []byte, atPosition uint16) ([]byte,
 	return onByteSlice, nil
 }
 
-/// getBit gets the value of a the bit at atPosition index from the fromByte
+// / getBit gets the value of a the bit at atPosition index from the fromByte
 func getBit(fromByte byte, atPosition uint16) (bool, error) {
 	if atPosition > 7 || atPosition < 0 {
 		return false, errors.New("E#9NHL1 - only bits 0-7 are supported by this function")
