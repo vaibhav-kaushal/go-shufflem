@@ -1,4 +1,4 @@
-package main
+package shufflem
 
 import (
 	"testing"
@@ -84,8 +84,8 @@ func TestWorkUnit_Shuffle(t *testing.T) {
 		t.Errorf("E#O4PEJ - Unexpected length of slice")
 	}
 
-	//fmt.Printf("L#O4PXL - %v\n", workUnit.Output)
-	//fmt.Printf("L#O4PY4 - %v\n", expectedResult)
+	// fmt.Printf("L#O4PXL - %v\n", workUnit.Output)
+	// fmt.Printf("L#O4PY4 - %v\n", expectedResult)
 
 	for i := 0; i < len(workUnit.Output); i++ {
 		if workUnit.Output[i] != expectedResult[i] {

@@ -1,4 +1,4 @@
-package main
+package shufflem
 
 // The executable program here exhibits an example of shuffling
 // func main() {
